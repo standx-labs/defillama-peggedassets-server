@@ -5046,4 +5046,33 @@ export default [
     twitter: "https://x.com/felixprotocol",
     wiki: "https://usefelix.gitbook.io/felix-docs"
   },
+  {
+    // `gecko_id` MUST stay equal to the key this asset is registered under in
+    // src/adapters/peggedAssets/index.ts ('standx-dusd'), because
+    // src/peggedAssets/utils/importAdapter.ts resolves the adapter module by
+    // `gecko_id`. Without this entry the adapter is never executed at all,
+    // since src/peggedAssets/storePeggedAssets/storePegged.ts iterates this
+    // array — not the adapter index — to decide what to collect.
+    id: "252",
+    // Native BSC deployment; the `bsc:` prefix is required so that
+    // src/adapters/peggedAssets/prices/index.ts queries the coins API with the
+    // correct chain key instead of defaulting to `ethereum:`.
+    address: "bsc:0xaf44A1E76F56eE12ADBB7ba8acD3CbD474888122",
+    name: "StandX DUSD",
+    symbol: "DUSD",
+    url: "https://standx.com",
+    description:
+      "DUSD is a yield-bearing US dollar stablecoin issued by StandX, with yield distributed automatically to holders.",
+    mintRedeemDescription:
+      "DUSD is minted and redeemed through the StandX application; see https://standx.com for the current mint and redemption terms.",
+    onCoinGecko: "true",
+    gecko_id: "standx-dusd",
+    cmcId: null,
+    pegType: "peggedUSD",
+    pegMechanism: "crypto-backed",
+    priceSource: "defillama",
+    auditLinks: ["https://github.com/standx-labs/stand_audit"],
+    twitter: null,
+    wiki: null
+  },
 ] as PeggedAsset[];
